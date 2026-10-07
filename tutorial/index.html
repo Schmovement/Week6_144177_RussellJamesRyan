@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="judul">
+        <h1>Contoh penggunaan DOM</h1>
+    </div>
+    <div id="sisip"></div>
+    <div id="bungkus">
+        <ul id="menu">
+            <li>Halaman Utama</li>
+            <li><a href="profil.html">Profil</a></li>
+            <li><a href="">Artikel</a></li>
+            <li><a href="">Galeri</a></li>
+            <li><a href="">Testimonial</a></li>
+            <li><a href="">Kontak</a></li>
+        </ul>
+    </div>
+    <div id="fungsi">
+        <h2>Fungsi DOM</h2>
+    </div>
+    <div id="coba-fungsi">
+        <ol>
+            <li><a href="JavaScript:ubahNodeValue()">Ganti Node Value dari Galeri</a></li>
+            <li><a href="JavaScript:periksaProperti()">Periksa Properti dari Menu ke-4</a></li>
+            <li><a href="JavaScript:ubahAtribut()">Ganti Atribut dari link Galeri</a></li>
+            <li><a href="JavaScript:tambahAnak()">Menambah Anak Bontot</a></li>
+            <li><a href="JavaScript:bikinKembaran()">Bikin Kembaran dari Galeri</a></li>
+            <li><a href="JavaScript:sisipAnak()">Nyisipin Anak di antara Galeri dan Testimonial</a></li>
+            <li><a href="JavaScript:gantiAnak()">Ganti Node</a></li>
+        </ol>
+    </div>
+    <script type="text/javascript">
+        function ubahNodeValue () {
+            a = document.getElementById("menu").getElementById("a")[2].firstChild;
+            a.nodeValue = "Foto";
+            b = "<p>Galeri berubah menjadi Foto</p>";
+            document.getElementById("sisip").innerHTML = b;
+        }
+
+        function periksaProperti() {
+            a = document.getElementById("menu").getElementById("a")[2].firstChild;
+            b = "<p>nodeName : " + a.nodeName;
+            b += "<br>nodeType : " + a.nodeType;
+            b += "<br>nodeValue : " + a.nodeValue;
+            document.getElementById("sisip").innerHTML = b;
+        }
+
+        function ubahAtribut() {
+            a = document.getElementById("menu").getElementById("a")[3].firstChild;
+            a.setAttribute("href", "https:facebook.com");
+            b = "<p>Link dari Galeri telah berubah dari galeri.html menjadi facebook.com<p>";
+            document.getElementById("sisip").innerHTML = b;
+        }
+
+        function tambahAnak() {
+            a = document.createElement("li");
+            b = document.createTextNode("Tambah anak lagi");
+            a.appendChild(b);
+            c = document.getElementById("menu");
+            c.appendChild(a);
+            d = "<p>Anak dari menu bertambah</p>";
+            document.getElementById("sisip").innerHTML = d;
+        }
+
+        function bikinKembaran() {
+            a = document.getElementById("menu").getElementById("li")[3];
+            b = a.cloneNode(true);
+            c = document.getElementById("menu");
+            a.parentNode.appendChild(b);
+            d = "<p>Galeri berhasil di kloning dan jadi anak bontot</p>"
+            document.getElementById("sisip").innerHTML = d;
+        }
+
+        function sisipAnak() {
+            a = document.createElement("li");
+            b = document.createTextNode("Anak Sisipan");
+            a.appendChild(b);
+            c = document.querySelector("#menu ul");
+            d = c.getElementByTagName("li")[4];
+            c.insertBefore(a, d);
+            e = "<p>Berhasil nyisipin anak antara Galery";
+            document.getElementById("sisip").innerHTML = e;
+        }
+
+        function gantiAnak() {
+            a = document.getElementById("menu");
+            b = a.document.getElementByTagName("li")[5];
+            c = document.createElement("li");
+            d = document.createTextNode("Anak Baru");
+            c.appendChild(d);
+            a.replaceChild(c, b);
+            d = "<p>Menu yang ke-6 diganti jadi Anak baru</p>";
+            document.getElementById("sisip").innerHTML = d;
+        }
+    </script>
+</body> 
+
+</html>
